@@ -1,3 +1,5 @@
+import time
+
 def authenticate(max_attempts=3, username="admin", password="password123"):
     """
     Authenticate the user by prompting for a username and a password.
@@ -18,13 +20,19 @@ def authenticate(max_attempts=3, username="admin", password="password123"):
 
     for i in range(max_attempts):
         print(f"Attempt {i+1}/{max_attempts}")
+        time.sleep(1)  # Pause for 1 second to simulate processing time
         username_input = input("Enter your username: ")
+        time.sleep(1)  # Pause for 1 second to simulate processing time
         password_input = input("Enter your password: ")
 
         if username_input.lower() == username.lower() and password_input == password:
+            print("Authenticating...")
+            time.sleep(2)  # Pause for 2 seconds to simulate processing time
             print("Authentication successful!")
             return True
 
+        print("Authenticating...")
+        time.sleep(2)  # Pause for 2 seconds to simulate processing time
         print("Authentication failed. Please try again.")
 
     print("Maximum number of attempts reached.")
