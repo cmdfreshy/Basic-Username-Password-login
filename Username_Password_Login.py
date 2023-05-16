@@ -1,19 +1,39 @@
-def authenticate():
-    # Predefined username and password
-    correct_username = "admin"
-    correct_password = "password123"
+def authenticate(max_attempts=3, username="admin", password="password123"):
+    """
+    Authenticate the user by prompting for a username and a password.
+    
+    Parameters:
+        - max_attempts (int): the maximum number of attempts allowed to enter the correct credentials.
+        - username (str): the correct username for authentication.
+        - password (str): the correct password for authentication.
+    
+    Returns:
+        - bool: True if authentication is successful, False otherwise.
+    
+    Raises:
+        - ValueError: if max_attempts is not positive.
+    """
+    if max_attempts <= 0:
+        raise ValueError("max_attempts must be positive.")
 
-    for i in range(3):
-        username = input("Enter your username: ")
-        password = input("Enter your password: ")
+    for i in range(max_attempts):
+        print(f"Attempt {i+1}/{max_attempts}")
+        username_input = input("Enter your username: ")
+        password_input = input("Enter your password: ")
 
-        if username == correct_username and password == correct_password:
+        if username_input.lower() == username.lower() and password_input == password:
             print("Authentication successful!")
-            return
+            return True
 
         print("Authentication failed. Please try again.")
 
     print("Maximum number of attempts reached.")
+    return False
 
 # Call the authenticate function to start the authentication process
-authenticate()
+is_authenticated = authenticate(max_attempts=3, username="admin", password="password123")
+
+if is_authenticated:
+    print("Access granted. Welcome!")
+else:
+    print("Access denied. Please contact an administrator.")
