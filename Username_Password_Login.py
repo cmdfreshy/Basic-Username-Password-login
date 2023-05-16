@@ -3,7 +3,7 @@ def authenticate():
     correct_username = "admin"
     correct_password = "password123"
 
-    for i in range(5):
+    for i in range(3):
         username = input("Enter your username: ")
         password = input("Enter your password: ")
 
