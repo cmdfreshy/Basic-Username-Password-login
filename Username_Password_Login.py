@@ -1,5 +1,7 @@
 import time
 
+
+
 def authenticate(max_attempts=3, username="admin", password="password123"):
     """
     Authenticate the user by prompting for a username and a password.
